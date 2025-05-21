@@ -173,18 +173,18 @@ and giving me the opportunity to grow.
       }
       setInterval(createBalloon, 500);
 
-      // Confetti on click
-      document.body.addEventListener("click", (e) => {
-        for (let i = 0; i < 30; i++) {
-          const c = document.createElement("div");
-          c.classList.add("confetti");
-          c.style.left = e.clientX + "px";
-          c.style.top = e.clientY + "px";
-          c.style.setProperty("--hue", Math.floor(Math.random() * 360));
-          document.body.appendChild(c);
-          setTimeout(() => c.remove(), 2000);
-        }
-      });
+      // Continuous confetti falling
+      function createConfetti() {
+        const c = document.createElement("div");
+        c.classList.add("confetti");
+        c.style.left = Math.random() * window.innerWidth + "px";
+        c.style.top = "0px";
+        c.style.setProperty("--hue", Math.floor(Math.random() * 360));
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 2000);
+      }
+
+      setInterval(createConfetti, 100); // Change the interval for more or less frequent confetti
     </script>
   </body>
 </html>
